@@ -1,0 +1,37 @@
+---
+title: "Multimodal Input"
+description: "Handling file and image inputs via SDK"
+---
+
+Scoutline allows users to upload evidence directly into a chat thread for real-time analysis.
+
+## Sending Files
+
+<CodeGroup>
+```typescript TypeScript
+const file = document.querySelector('input').files[0];
+await chat.sendFile(file, 'Analyze this deposition transcript');
+```
+
+```python Python
+with open('transcript.pdf', 'rb') as f:
+    chat.send_file(f, 'Analyze this deposition transcript')
+```
+
+```bash cURL
+curl -X POST https://api.scoutline.com/v1/chat/upload \
+  -H "Authorization: Bearer $JWT" \
+  -F "file=@transcript.pdf" \
+  -F "prompt=Analyze this"
+```
+
+```go Go
+f, _ := os.Open("transcript.pdf")
+chat.SendFile(f, "Analyze this")
+```
+</CodeGroup>
+
+## Security
+
+Files sent via the SDK are immediately moved to a temporary hardened partition in your S3 Vault and are automatically deleted after the session expires unless explicitly "Pinned" to the matter.
+

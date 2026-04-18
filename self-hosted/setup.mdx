@@ -1,0 +1,31 @@
+---
+title: "Initial Setup"
+description: "Configuring the self-hosted Scoutline environment"
+---
+
+Once the prerequisites are met, the initialization process involves configuring the Scoutline environment variables and firm perimeter settings.
+
+## Environment Configuration
+
+Create a `.env` file in your root deployment directory. You will need to populate it with your specific firm metadata.
+
+```bash
+SCOUTLINE_FIRM_ID=firm_id_xxx
+SCOUTLINE_LICENSE_KEY=lic_xxx
+DATABASE_URL=postgresql://user:pass@localhost:5432/scoutline
+VECTOR_DB_URL=http://vectordb:8080
+```
+
+## Initialization Service
+
+Run the Scoutline Bootstrap service to prepare the local environment:
+
+```bash
+docker run --rm -v $(pwd):/app scoutline/bootstrap:latest init
+```
+
+This service will:
+1. Verify hardware compatibility.
+2. Initialize local database schemas.
+3. Configure the encrypted volume for the local Vault.
+

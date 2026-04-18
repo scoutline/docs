@@ -1,0 +1,31 @@
+---
+title: "Docker Setup"
+description: "Orchestrating the Legal OS with Docker Compose"
+---
+
+We provide a standardized Docker Compose configuration to ensure consistent performance across diverse server environments.
+
+## Deployment Architecture
+
+The Scoutline local perimeter consists of several containerized services:
+- **`sc-gateway`**: Nginx-powered entry point for the firm subdomain.
+- **`sc-core`**: The primary application logic and UI.
+- **`sc-agent`**: The executor for Agentic Drafting and Canvas intelligence.
+- **`sc-db`**: Local PostgreSQL-compatible storage.
+
+## Starting the Stack
+
+To pull and start the Scoutline ecosystem:
+
+```bash
+docker compose up -d
+```
+
+## Updating Containers
+
+To ensure your firm always has the latest security patches and legal models, run:
+
+```bash
+docker compose pull && docker compose up -d
+```
+

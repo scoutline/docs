@@ -1,0 +1,23 @@
+---
+title: "Licensing & Activation"
+description: "Managing enterprise seats and firm activation"
+---
+
+Self-hosted deployments require a valid Scoutline Enterprise License Key to unlock the full potential of the Agentic Lawyer and jurisdictional search.
+
+## Activation Flow
+
+1. **Obtain Key**: Retrieve your license key from the Scoutline Enterprise Portal.
+2. **Inject Key**: Add the key to your `.env` file as `SCOUTLINE_LICENSE_KEY`.
+3. **Verification**: During startup, the Bootstrap service validates the key against our Global API.
+
+## Seat Management
+
+Self-hosted instances allow for flexible seat management within the firm's private perimeter. The internal admin dashboard provides granular controls for:
+- **User Provisioning**: Manually adding or syncing legal team members via LDAP/AD.
+- **Role Assignment**: Defining access levels for the Vault and Intelligence Canvas.
+
+## Success-Case Fees
+
+Even in self-hosted environments, automated filings and major drafting jobs are subject to successful outcome-based fees, calculated and reported via the encrypted telemetry link.
+

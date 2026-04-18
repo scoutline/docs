@@ -1,0 +1,33 @@
+---
+title: "API Keys & BYOK"
+description: "Governing access via Scoutline Dev or Bring Your Own Key"
+---
+
+Scoutline provides two methods for managing the API keys required for agentic workflows and jurisdictional search.
+
+## Scoutline Dev Keys (Managed)
+
+By default, self-hosted instances use Scoutline-managed developer keys. This is the simplest setup:
+- **Managed Lifecycle**: Scoutline handles key rotation and security.
+- **Unified Billing**: Usage is bundled with your success-case fees.
+- **Integrated Tracing**: Full support for the Error-Proof Guarantee.
+
+## Bring Your Own Key (BYOK)
+
+Enterprise firms may choose to provide their own keys for specific downstream services (e.g., Anthropic, OpenAI, or specialized Legal Search providers).
+
+### Benefits of BYOK:
+- **Direct Billing**: Pay service providers directly at your negotiated rates.
+- **Extended Rate Limits**: Utilize your own organizational quotas.
+
+### Configuration
+Update the `keys.json` file in your secure volume:
+
+```json
+{
+  "provider": "anthropic",
+  "api_key": "sk-ant-xxx",
+  "mode": "exclusive"
+}
+```
+

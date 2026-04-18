@@ -1,0 +1,35 @@
+---
+title: "Setup & Implementation"
+description: "Frictionless Onboarding for Modern Law Firms"
+---
+
+Setting up a firm on Scoutline is designed to be frictionless. We prioritize a "zero-touch" implementation philosophy that isolates your data while providing a customized environment.
+
+## Firm Subdomain Strategy
+
+Every firm on Scoutline is isolated via a dedicated subdomain structure. This ensures:
+- **Data Isolation**: Your firm's environment is physically and logically separated from others.
+- **Customized Branding**: Tailor the interface to match your firm's identity.
+- **Dedicated Perimeter**: Independent AWS security groups and IAM policies per firm.
+
+## Implementation Steps
+
+<Steps>
+  <Step title="Initialize Foundation">
+    Run the Scoutline activation service to provision your dedicated AWS resources (Cognito, S3 Vault, RDS).
+  </Step>
+  <Step title="Connect Repositories">
+    Integrate your existing document repositories (OneDrive, Google Workspace, or legacy databases) with the Scoutline Vault.
+  </Step>
+  <Step title="Agentic Indexing">
+    Our Agentic Lawyer begins indexing your firm's specific legal context, mapping precedents and case structures.
+  </Step>
+  <Step title="Deploy Canvas">
+    Invite your team to the dedicated firm dashboard and begin collaborating on the Intelligence Canvas.
+  </Step>
+</Steps>
+
+## Audit-Ready from Day One
+
+The system is built to be "audit-ready" immediately upon deployment. Pre-configured templates for common legal workflows ensure your firm meets compliance standards without manual configuration.
+

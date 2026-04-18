@@ -1,0 +1,30 @@
+---
+title: "Data Sovereignty"
+description: "Managing AWS regions and jurisdictional data"
+---
+
+Scoutline provides granular control over where your legal data is processed and stored within the AWS global infrastructure.
+
+## Regional Endpoints
+
+Firms can specify the AWS region for their S3 Vault and RDS compute during the activation process. Our API is distributed globally, but data processing stays within your chosen region.
+
+| Region Code | Location |
+| :--- | :--- |
+| `us-east-1` | N. Virginia, USA |
+| `us-west-2` | Oregon, USA |
+| `eu-central-1` | Frankfurt, Germany |
+| `ap-southeast-1` | Singapore |
+
+## Regional Headers
+
+When utilizing the **Scoutline Global API**, you can use the `X-Scoutline-Region` header to force a request to be processed by a specific regional cluster.
+
+```bash
+X-Scoutline-Region: eu-central-1
+```
+
+## Data Residency Compliance
+
+Our architecture ensures that documents never leave your firm's private AWS perimeter, allowing you to meet strict GDPR, HIPAA, and other jurisdictional data sovereignty requirements.
+

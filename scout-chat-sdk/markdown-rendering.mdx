@@ -1,0 +1,37 @@
+---
+title: "Markdown Rendering"
+description: "Rich text support within the agentic chat UI"
+---
+
+The Scoutline agents communicate using professional Markdown, which the SDK renders with "Interface Craft" precision.
+
+## Elements Supported
+
+- **Tables**: For displaying case metadata or entity comparisons.
+- **Citations**: Special `[Citation]` tokens that the SDK automatically converts into interactive popovers.
+- **Fenced Code Blocks**: For sharing jurisdictional rules or API snippets.
+
+## Custom Rendering
+
+You can override the default Markdown renderer if your application requires custom components (e.g., specific law firm branding for tables).
+
+<CodeGroup>
+```typescript TypeScript
+chat.configure({
+  markdownRenderer: (text) => myCustomRenderer(text)
+});
+```
+
+```python Python
+# Handled via the Web SDK configuration.
+```
+
+```bash cURL
+# Raw Markdown is returned in the API response.
+```
+
+```go Go
+// Handled via the Web SDK configuration.
+```
+</CodeGroup>
+

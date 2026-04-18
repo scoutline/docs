@@ -1,0 +1,22 @@
+---
+title: "Document Parsing"
+description: "OCR and high-density document processing"
+---
+
+The Scoutline Parsing Service transforms raw discovery documents into structured, searchable data.
+
+## Parsing Engine
+
+Our engine is optimized for legal documents, handling:
+- **OCR (Optical Character Recognition)**: Converting scanned PDFs and images into text.
+- **Metadata Extraction**: Automatically identifying dates, parties, and citations.
+- **Semantic Chunking**: Breaking down long documents into contextually aware segments for the Vector DB.
+
+## Local vs. Cloud Parsing
+
+By default, Scoutline parses documents locally to maintain maximum data sovereignty. For firms requiring extreme scale, the service can be configured to offload complex OCR tasks to our private AWS-managed perimeter via the Global API.
+
+```bash
+PARSING_MODE=LOCAL # Options: LOCAL, HYBRID, CLOUD
+```
+

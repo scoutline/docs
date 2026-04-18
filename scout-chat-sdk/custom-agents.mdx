@@ -1,0 +1,37 @@
+---
+title: "Custom Agents"
+description: "Configuring specialized agents via the SDK"
+---
+
+The Scout Chat SDK allows you to route messages to specialized agentic models trained for specific legal tasks.
+
+## Selecting an Agent
+
+Pass the `agentId` during session initialization or switch agents mid-thread.
+
+<CodeGroup>
+```typescript TypeScript
+chat.switchAgent('agent_discovery');
+```
+
+```python Python
+chat.switch_agent('agent_discovery')
+```
+
+```bash cURL
+curl -X PUT https://api.scoutline.com/v1/chat/agent \
+  -H "Authorization: Bearer $JWT" \
+  -d '{"agent_id": "agent_discovery"}'
+```
+
+```go Go
+chat.SwitchAgent("agent_discovery")
+```
+</CodeGroup>
+
+## Available Agent Profiles
+
+- **`agent_discovery`**: Specialized in document review and fact-node extraction.
+- **`agent_drafting`**: Focused on motion writing and Bluebook citation.
+- **`agent_research`**: Connected to jurisdictional case law databases.
+

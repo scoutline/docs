@@ -1,0 +1,65 @@
+---
+title: "Getting Started"
+description: "Initializing the Scout Chat SDK for agentic legal interfaces"
+---
+
+The Scout Chat SDK allows you to embed Scoutline's conversational intelligence directly into your firm's private portals or client-facing applications.
+
+## Installation
+
+Install the SDK using your preferred package manager.
+
+<CodeGroup>
+```typescript TypeScript
+npm install @scoutline/chat-sdk
+```
+
+```python Python
+pip install scoutline-chat-sdk
+```
+
+```bash cURL
+# No installation required for cURL
+```
+
+```go Go
+go get github.com/scoutline/chat-sdk-go
+```
+</CodeGroup>
+
+## Quick Start
+
+Initialize the SDK with your firm's Environment ID and a secure JWT.
+
+<CodeGroup>
+```typescript TypeScript
+import { ScoutChat } from '@scoutline/chat-sdk';
+
+const chat = new ScoutChat({
+  envId: 'env_xxx',
+  token: 'YOUR_JWT'
+});
+```
+
+```python Python
+from scoutline import ScoutChat
+
+chat = ScoutChat(
+    env_id='env_xxx',
+    token='YOUR_JWT'
+)
+```
+
+```bash cURL
+curl -X POST https://api.scoutline.com/v1/chat/init \
+  -H "Authorization: Bearer $JWT" \
+  -d '{"env_id": "env_xxx"}'
+```
+
+```go Go
+import "github.com/scoutline/chat-sdk-go"
+
+chat := scoutline.NewChat("env_xxx", "YOUR_JWT")
+```
+</CodeGroup>
+

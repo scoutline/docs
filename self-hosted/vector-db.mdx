@@ -1,0 +1,49 @@
+---
+title: "Vector DB Setup"
+description: "Configuring high-performance vector stores for agentic memory"
+---
+
+Vector databases are the "memory" of the Scoutline Agentic Lawyer. They store semantic embeddings of your firm's documents to allow for real-time natural language query and context retrieval.
+
+## Supported Providers & Preferences
+
+Scoutline is engineered to work with a range of high-performance vector stores, whether hosted on-premise or in your private cloud.
+
+### Weaviate (Self-Hosted Recommended)
+An open-source, modular vector database designed for high-density AI applications.
+- **Port**: `8080` (HTTP) / `50051` (gRPC)
+- **Key Feature**: Native semantic search and easy horizontal scaling.
+
+```json
+{
+  "provider": "weaviate",
+  "url": "http://weaviate:8080",
+  "api_key": "your-weaviate-key"
+}
+```
+
+### Pinecone (Private Cloud Managed)
+A managed vector database for firms prioritizing zero-maintenance infrastructure.
+- **Key Feature**: Fully managed service with global availability.
+- **Environment**: Cloud-only (requires outbound connectivity to Pinecone).
+
+```json
+{
+  "provider": "pinecone",
+  "api_key": "pc_xxx",
+  "environment": "us-east-1-aws"
+}
+```
+
+### ChromaDB (Developer Favorite)
+A lightweight, open-source embedding database prioritized for developer velocity and rapid testing.
+- **Key Feature**: Simple API and fast local setup for Sandbox environments.
+
+### AWS Aurora (pgvector)
+For firms already centralized on AWS, Aurora with the `pg_vector` extension provides a powerful relational + vector hybrid.
+- **Key Feature**: Unified management of case metadata and semantic embeddings within the same RDS perimeter.
+
+## Memory Hardening
+
+The `sc-agent` service handles the generation of embeddings locally, ensuring your document vectors never leave your private perimeter. All vector store connections must be encrypted via TLS if the database resides outside the local VPC/Docker network.
+

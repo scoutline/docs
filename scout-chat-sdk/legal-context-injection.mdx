@@ -1,0 +1,46 @@
+---
+title: "Legal Context Injection"
+description: "Providing matter metadata to the agentic chat"
+---
+
+To ensure high-performance legal reasoning, the Scout Chat SDK allows you to inject specific case context into the session.
+
+## Injecting Context
+
+Context can include specific document IDs from the Vault, jurisdictional rules, or entities from the Intelligence Canvas.
+
+<CodeGroup>
+```typescript TypeScript
+chat.setContext({
+  matterId: 'matt_123',
+  priorityDocs: ['doc_999', 'doc_888'],
+  jurisdiction: 'NY_SD'
+});
+```
+
+```python Python
+chat.set_context(
+    matter_id='matt_123',
+    priority_docs=['doc_999', 'doc_888'],
+    jurisdiction='NY_SD'
+)
+```
+
+```bash cURL
+curl -X PUT https://api.scoutline.com/v1/chat/context \
+  -H "Authorization: Bearer $JWT" \
+  -d '{"matter_id": "matt_123", "priority_docs": ["doc_999"]}'
+```
+
+```go Go
+chat.SetContext(scoutline.Context{
+    MatterID: "matt_123",
+    Jurisdiction: "NY_SD",
+})
+```
+</CodeGroup>
+
+## Dynamic Updates
+
+You can update the context mid-session as the user navigates your application, allowing the agent to pivot its reasoning based on the current UI state.
+

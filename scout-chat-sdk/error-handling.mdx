@@ -1,0 +1,48 @@
+---
+title: "Error Handling"
+description: "Professional handling of timeouts and agentic disconnects"
+---
+
+Robust error handling is critical for mission-critical legal applications. The Scout Chat SDK provides strictly-typed error objects.
+
+## Catching Errors
+
+<CodeGroup>
+```typescript TypeScript
+try {
+  await chat.sendMessage('...');
+} catch (error) {
+  if (error.code === 'CONTEXT_OVERFLOW') {
+    // Handle large matter metadata
+  }
+}
+```
+
+```python Python
+from scoutline.errors import ContextOverflow
+
+try:
+    chat.send_message('...')
+except ContextOverflow:
+    # Handle excessive context
+    pass
+```
+
+```bash cURL
+# Check HTTP status codes (e.g., 400, 401, 500)
+```
+
+```go Go
+err := chat.SendMessage("...")
+if err != nil && err.Code == "CONTEXT_OVERFLOW" {
+    // Handle error
+}
+```
+</CodeGroup>
+
+## Error Codes
+
+- `AUTH_FAILED`: Invalid or expired JWT.
+- `VAULT_UNREACHABLE`: Temporary S3 or network failure.
+- `AGENT_TIMEOUT`: The agentic reasoning loop exceeded the firm's QoS limit.
+

@@ -1,0 +1,42 @@
+---
+title: "Rate Limiting"
+description: "Governance for SDK-driven interactions"
+---
+
+To maintain High-Performance and ensure fair resource distribution across the firm, the Scout Chat SDK implements granular rate limiting.
+
+## Dynamic Limits
+
+Limits are applied at the User and Matter level.
+
+| Level | Limit | Reset |
+| :--- | :--- | :--- |
+| **User** | 100 queries / hour | Windowed |
+| **Matter** | 1,000 queries / day | Daily |
+
+## Handling Rate Limits
+
+The SDK will emit a `rateLimited` event if the threshold is reached.
+
+<CodeGroup>
+```typescript TypeScript
+chat.on('rateLimited', (retryAfter) => {
+  console.log(`Limit reached. Retry in ${retryAfter}ms`);
+});
+```
+
+```python Python
+chat.on('rateLimited', lambda t: print(f"Wait {t}ms"))
+```
+
+```bash cURL
+# API returns 429 Too Many Requests
+```
+
+```go Go
+chat.On("rateLimited", func(t int) {
+    log.Printf("Wait %dms", t)
+})
+```
+</CodeGroup>
+

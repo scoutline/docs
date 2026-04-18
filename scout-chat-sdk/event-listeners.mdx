@@ -1,0 +1,40 @@
+---
+title: "Event Listeners"
+description: "Capturing agentic events and legal outcomes"
+---
+
+The Scout Chat SDK emits a variety of events that allow your application to react to the agent's work cycle.
+
+## Core Events
+
+| Event | Description |
+| :--- | :--- |
+| `citationFound` | Emitted when the engine verifies a new legal source. |
+| `draftGenerated` | Emitted when a strictly-typed legal draft is ready for review. |
+| `vaultSearch` | Emitted when the agent initiates a search of the hardened Vault. |
+| `error` | Emitted during connection issues or agentic disconnects. |
+
+## Subscribing to Events
+
+<CodeGroup>
+```typescript TypeScript
+chat.on('citationFound', (citation) => {
+  showCitationToast(citation.caseName);
+});
+```
+
+```python Python
+chat.on('citationFound', lambda c: print(f"Found: {c['case_name']}"))
+```
+
+```bash cURL
+# Event monitoring via Webhooks or long-polling
+```
+
+```go Go
+chat.On("citationFound", func(c scoutline.Citation) {
+    log.Printf("Found %s", c.CaseName)
+})
+```
+</CodeGroup>
+

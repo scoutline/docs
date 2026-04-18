@@ -1,0 +1,37 @@
+---
+title: "Versioning & Stability"
+description: "Maintenance and upgrade paths for the SDK"
+---
+
+We maintain strict Semantic Versioning (SemVer) to ensure that your firm's custom portals remain stable.
+
+## Versioning Policy
+
+- **Major**: Breaking changes and major architecture shifts (e.g., v1 to v2).
+- **Minor**: New features and non-breaking refinements.
+- **Patch**: Security fixes and bug resolutions.
+
+## Deprecation Warnings
+
+We provide a 6-month deprecation window for any API changes. The SDK will emit `console.warn` messages when using deprecated methods.
+
+## Updating the SDK
+
+<CodeGroup>
+```typescript TypeScript
+npm update @scoutline/chat-sdk
+```
+
+```python Python
+pip install --upgrade scoutline-chat-sdk
+```
+
+```bash cURL
+# API version is managed via URL (/v1/)
+```
+
+```go Go
+go get -u github.com/scoutline/chat-sdk-go
+```
+</CodeGroup>
+

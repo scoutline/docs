@@ -1,16 +1,21 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "Scoutline Global API",
+    "description": "Secure, strictly-typed API for the Scoutline Legal OS. Engineered for high-stakes legal workflows with integrated Cognito authentication and granular audit trails.",
+    "version": "1.0.0",
     "license": {
-      "name": "MIT"
-    },
-    "version": "1.0.0"
+      "name": "Proprietary"
+    }
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.scoutline.com",
+      "description": "Production Environment"
+    },
+    {
+      "url": "https://sandbox.api.scoutline.com",
+      "description": "Development Sandbox"
     }
   ],
   "security": [
@@ -19,76 +24,31 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/v1/vault/documents": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "summary": "List Documents",
+        "description": "Returns a paginated list of documents from the firm's hardened S3 Vault. Access is governed by IAM policies and firm-isolation headers.",
         "parameters": [
           {
             "name": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "The maximum number of documents to return",
             "schema": {
               "type": "integer",
-              "format": "int32"
+              "default": 100
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "A list of documents",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Plant"
+                    "$ref": "#/components/schemas/Document"
                   }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
@@ -96,32 +56,106 @@
         }
       }
     },
-    "/plants/{id}": {
+    "/v1/drafting/generate": {
+      "post": {
+        "summary": "Generate Legal Draft",
+        "description": "Initiates an agentic drafting workflow to generate complex legal filings or briefs based on case context.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DraftRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Drafting job initiated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DraftJob"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vault/documents/{id}": {
       "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+        "summary": "Delete Document",
+        "description": "Permanently removes a document from the hardened S3 Vault and updates the firm's audit trail.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
             "required": true,
+            "description": "The unique ID of the document",
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
+            "description": "Document successfully marked for deletion"
+          }
+        }
+      }
+    },
+    "/v1/audit/logs": {
+      "get": {
+        "summary": "Retrieve Audit Logs",
+        "description": "Returns a granular audit trail for firm activities, including document access and AI-generated drafts.",
+        "responses": {
+          "200": {
+            "description": "A list of audit log entries",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AuditLog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/chat/query": {
+      "post": {
+        "summary": "Query Intelligence Canvas",
+        "description": "Submit natural language queries to the Scoutline Intelligence Canvas for real-time case structure analysis.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "query": { "type": "string" },
+                  "context": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Canvas intelligence response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "answer": { "type": "string" },
+                    "citations": { "type": "array", "items": { "type": "string" } }
+                  }
                 }
               }
             }
@@ -131,86 +165,60 @@
     }
   },
   "webhooks": {
-    "/plant/webhook": {
+    "/v1/webhooks/filing-update": {
       "post": {
-        "description": "Information about a new plant added to the store",
-        "requestBody": {
-          "description": "Plant added to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          }
-        },
+        "description": "Real-time updates on legal filing status and automated workflow completions.",
         "responses": {
-          "200": {
-            "description": "Return a 200 status to indicate that the data was received successfully"
-          }
+          "200": { "description": "OK" }
         }
       }
     }
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "Document": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
+          "id": { "type": "string" },
+          "filename": { "type": "string" },
+          "size": { "type": "integer" },
+          "uploadedAt": { "type": "string", "format": "date-time" },
+          "status": { "type": "string", "enum": ["indexed", "pending", "error"] }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
+      "DraftRequest": {
+        "type": "object",
+        "required": ["type", "context"],
+        "properties": {
+          "type": { "type": "string", "enum": ["motion", "brief", "contract"] },
+          "context": { "type": "string" },
+          "options": { "type": "object" }
+        }
       },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+      "DraftJob": {
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
+          "jobId": { "type": "string" },
+          "status": { "type": "string" },
+          "estimatedCompletion": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AuditLog": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "action": { "type": "string" },
+          "userId": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "metadata": { "type": "object" }
         }
       }
     },
     "securitySchemes": {
       "bearerAuth": {
         "type": "http",
-        "scheme": "bearer"
+        "scheme": "bearer",
+        "bearerFormat": "Cognito JWT"
       }
     }
   }

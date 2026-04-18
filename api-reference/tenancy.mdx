@@ -1,0 +1,23 @@
+---
+title: "Tenancy & Isolation"
+description: "Our distributed firm architecture"
+---
+
+Scoutline is built on a **Shared-Nothing Multi-Tenant Architecture**. This ensures that every law firm operates within a completely isolated AWS ecosystem.
+
+## Physical Isolation
+
+Unlike traditional multi-tenant SaaS that shares databases, Scoutline provisions dedicated resources per firm:
+- **Cognito User Pools**: Independent identity governance.
+- **S3 Buckets**: Hardened, per-firm storage with independent KMS keys.
+- **VPC Subnets**: Network isolation ensuring no cross-firm traffic.
+
+## Logical Isolation
+
+Our API Gateway uses the `X-Scoutline-Firm-ID` and Cognito JWT claims to route requests to the correct firm-specific Lambda or ECS cluster.
+
+## Security Guarantees
+
+- **No Shared Data**: Every database row and storage object is cryptographically bound to a specific tenant.
+- **Audit Sovereignty**: Your firm's audit trails are yours alone—stored in your private AWS perimeter.
+

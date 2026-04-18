@@ -1,0 +1,43 @@
+---
+title: "Scaling & Orchestration"
+description: "Growing your self-hosted Scoutline infrastructure"
+---
+
+As your firm's caseload grows, you can scale the Scoutline ecosystem horizontally to maintain "Interface Craft" performance. We provide guides for the three primary orchestration methods.
+
+## Docker & Compose Scaling
+
+For smaller to medium-sized firms, Docker Compose provides a robust and simple way to scale the `sc-agent` service to handle multiple concurrent jobs.
+
+```bash
+docker compose up -d --scale sc-agent=4
+```
+
+- **Best for**: Firms with single-node or small multi-node (Swarm) deployments.
+- **Complexity**: Low.
+
+## Kubernetes (K8s) Guide
+
+For Enterprise firms utilizing Kubernetes (EKS, GKE, or on-premise K8s), we provide a **Helm Chart** to manage the Scoutline perimeter.
+
+### Key Features
+- **Auto-scaling (HPA)**: Dynamically adding `sc-agent` pods based on real-time CPU/Memory pressure from drafting jobs.
+- **Node Affinity**: Ensure critical legal processing pods run on hardened, security-optimized nodes.
+- **High Availability**: Automated failovers across multiple worker nodes.
+
+```bash
+helm install scoutline-perimeter ./scoutline-hc -n legal-os
+```
+
+## AWS Containers Guide (ECS & EKS)
+
+Scoutline is designed to be a "native resident" of the AWS ecosystem. We provide specialized CloudFormation and Terraform templates for both **ECS (Elastic Container Service)** and **EKS (Elastic Kubernetes Service)**.
+
+### ECS (Fargate or EC2)
+- **Managed Perimeters**: Use ECS to run Scoutline containers without managing the underlying EC2 instances.
+- **IAM Integration**: Bind specific AWS IAM roles directly to your `sc-agent` tasks for secure S3 Vault access.
+
+### EKS (Managed Kubernetes)
+- **Enterprise Standard**: Use the Scoutline Helm chart on EKS to leverage the power of Kubernetes with the reliability of AWS-managed control planes.
+- **Global Reach**: Scale your EKS clusters across multiple availability zones and regions with ease.
+

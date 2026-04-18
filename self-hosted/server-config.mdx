@@ -1,0 +1,29 @@
+---
+title: "Server Configuration"
+description: "Hardening the local Scoutline perimeter"
+---
+
+A successful self-hosted deployment requires specific host-level configurations to ensure data sovereignty and high-performance execution.
+
+## Network Hardening
+
+We recommend a restricted outbound policy. Your server only needs to communicate with:
+- `api.scoutline.com` (License & Updates)
+- Your designated AWS region for backup synchronization (optional).
+
+## SSL & Reverse Proxy
+
+The Scoutline Gateway expects an SSL-terminated connection. We recommend using **Certbot** with Nginx if you are not utilizing a hardware load balancer.
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name vault.yourfirm.com;
+    ...
+}
+```
+
+## System Optimization
+
+For high-density document parsing, ensure the host system has `vm.max_map_count` set to at least `262144`.
+

@@ -1,0 +1,24 @@
+---
+title: "Entity & Case Nodes"
+description: "Mapping the relational graph of your legal matter"
+---
+
+At the heart of the "Legal OS" is the Entity Node—a structured representation of people, companies, facts, and statutes.
+
+## Node Types
+
+- **Entity Node**: Represents a party (e.g., Plaintiff, Witness, Corporation).
+- **Fact Node**: Represents a specific event verified by evidence.
+- **Legal Node**: Represents a statute, case law, or court rule.
+- **Link Node**: Defines the relationship between other nodes (e.g., "Owned By," "Contradicts," "Supports").
+
+## Interaction Patterns
+
+- **Hover**: Preview the metadata of the entity.
+- **Double-Click**: Open the node's full case file from the Vault.
+- **Click-and-Drag**: Create a relationship link between two nodes.
+
+## Agentic Node Creation
+
+Type `/node` followed by a description (e.g., `/node Add XYZ Corp as a Defendant`) and our agent will automatically provision the node and search for related metadata in the Vault.
+

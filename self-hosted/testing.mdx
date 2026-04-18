@@ -1,0 +1,24 @@
+---
+title: "Testing & Validation"
+description: "Ensuring parity with the Scoutline managed environment"
+---
+
+Before promoting your self-hosted instance to production, we recommend performing a series of validation tests.
+
+## Parity Tests
+
+The Scoutline CLI includes a specialized `validate` command to check for environment parity:
+
+```bash
+scoutline-cli validate --environment self-hosted
+```
+
+This command verifies:
+1. **Connectivity**: Access to the Global API and local DB/Vector stores.
+2. **Parsing Integrity**: A test run of the OCR engine.
+3. **Drafting Accuracy**: A benchmark generation of a sample motion.
+
+## Benchmarking
+
+Monitor the `sc-agent` container logs to ensure that drafting jobs are completing within the expected latency profile for your hardware configuration.
+

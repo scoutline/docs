@@ -1,0 +1,25 @@
+---
+title: "Deployment Patterns"
+description: "Production-ready implementation examples"
+---
+
+Best practices for deploying Scoutline's agentic chat into enterprise-grade legal environments.
+
+## Pattern A: The Side-Pane Assistant
+
+Embed the `ScoutChatBox` as a collapsible side-pane in your internal matter management system.
+- **Best Use**: Real-time discovery review.
+- **Configuration**: `theme: 'compact'`, `height: '100%'`.
+
+## Pattern B: The Full-Canvas Expert
+
+A dedicated, full-screen conversational interface for deep case building.
+- **Best Use**: Early-stage strategy sessions and drafting.
+- **Configuration**: `theme: 'full-screen'`, `showCanvasIntegration: true`.
+
+## Pattern C: The Client Portal Guide
+
+A restricted, high-security chat for providing case updates to clients.
+- **Best Use**: Client communication.
+- **Configuration**: `readOnlyEvidence: true`, `accentColor: '#ClientBrand'`.
+

@@ -1,0 +1,34 @@
+---
+title: "Chat Persistence"
+description: "Managing thread history in the firm's private Vault"
+---
+
+Scoutline ensures that every legal conversation is persistent and searchable within your secure perimeter.
+
+## Thread Management
+
+Conversations are grouped into **Threads**. You can resume a thread at any time to maintain context.
+
+<CodeGroup>
+```typescript TypeScript
+const history = await chat.getThreadHistory('thread_123');
+```
+
+```python Python
+history = chat.get_thread_history('thread_123')
+```
+
+```bash cURL
+curl https://api.scoutline.com/v1/chat/threads/thread_123 \
+  -H "Authorization: Bearer $JWT"
+```
+
+```go Go
+history, _ := chat.GetThreadHistory("thread_123")
+```
+</CodeGroup>
+
+## Exporting History
+
+Firms can export chat threads as verifiable audit logs in PDF or JSON format, ensuring that the "Verifiable Intelligence" path is preserved for billing and compliance.
+

@@ -1,0 +1,22 @@
+---
+title: "Security & Hardening"
+description: "Protecting the local Legal OS perimeter"
+---
+
+Self-hosting Scoutline provides maximum data sovereignty, but it also shifts the responsibility of perimeter security to your firm's infrastructure team.
+
+## Encrypted Volumes
+
+All data within the self-hosted Vault is stored on encrypted disk volumes. We recommend using **LUKS** on Linux or your provider's native volume encryption (e.g., AWS EBS encryption) to ensure data-at-rest security.
+
+## Firewall Configuration
+
+Configure your host firewall (e.g., `ufw` or `iptables`) to only allow traffic on necessary ports:
+- **Port 443**: Inbound for the user dashboard and API.
+- **Port 6333**: Internal communication only (Qdrant/Vector DB).
+- **Port 5432**: Internal communication only (PostgreSQL).
+
+## Zero-Log Policy
+
+The Scoutline core service is designed with a "Privacy First" logging policy. Sensitive document content is never written to standard container logs—only high-level workflow events and performance metrics are captured.
+

@@ -1,0 +1,27 @@
+---
+title: "API Connectivity"
+description: "Bridging self-hosted instances with the Scoutline Global API"
+---
+
+The Scoutline self-hosted instance is designed to be a "thick client" that handles local data processing while leveraging the **Scoutline Global API** for specialized services.
+
+## Outbound Proxy Configuration
+
+If your firm requires an outbound proxy for internet access, configure the `sc-core` service in your `.env` file:
+
+```bash
+HTTP_PROXY=http://proxy.yourfirm.local:8080
+HTTPS_PROXY=http://proxy.yourfirm.local:8080
+```
+
+## Available Global Services
+
+Self-hosted instances communicate with the Global API for:
+- **License Validation**: Ensuring your firm's activation remains active.
+- **Agentic Model Updates**: Downloading the latest strictly-typed legal schemas.
+- **Jurisdictional Search**: Accessing external statutes and court records (optional).
+
+## Air-Gapped Mode
+
+For high-security environments, Scoutline Enterprise supports a fully air-gapped configuration. In this mode, updates are provided via encrypted physical media or a private Scoutline repository.
+

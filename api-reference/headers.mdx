@@ -1,0 +1,26 @@
+---
+title: "Headers & Metadata"
+description: "Contextualizing your legal requests"
+---
+
+Beyond standard HTTP headers, Scoutline requires specific headers to process legal workflows and maintain audit trails.
+
+## Required Headers
+
+| Header | Description |
+| :--- | :--- |
+| `Authorization` | Bearer token from AWS Cognito. |
+| `X-Scoutline-Firm-ID` | Your unique legal firm identifier (provided in the dashboard). |
+| `Content-Type` | Must be `application/json` for all POST/PUT requests. |
+
+## Optional Audit Headers
+
+To enrich your firm's audit trail, you can include custom tracing metadata:
+
+- **`X-Scoutline-Matter-ID`**: Link the API call to a specific internal case or matter number.
+- **`X-Idempotency-Key`**: A unique string to prevent duplicate processing of draft generation or vault deletions.
+
+## Request Tracing
+
+If you need support for a specific failed request, always provide the `X-Scoutline-Request-ID` returned in the response headers. This allows our team to quickly resolve issues within the Error-Proof Guarantee framework.
+

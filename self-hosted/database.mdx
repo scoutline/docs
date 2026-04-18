@@ -1,0 +1,24 @@
+---
+title: "Scoutline Public DB"
+description: "Managing the local relational database"
+---
+
+Scoutline utilizes a local PostgreSQL-compatible database to manage firm metadata, case structures, and audit logs.
+
+## Recommended Version
+
+We recommend **PostgreSQL 15+** with the `pg_vector` extension for best performance with agentic features.
+
+## Internal vs. External Database
+
+- **Internal (Default)**: The `sc-db` container runs a pre-configured instance in your Docker stack.
+- **External**: Point the `DATABASE_URL` in your `.env` file to your firm's existing managed database cluster (e.g., local RDS or on-premise PostgreSQL).
+
+## Schema Migrations
+
+Migrations are handled automatically by the Scoutline Bootstrap service during startup.
+
+```bash
+docker run --rm scoutline/bootstrap:latest migrate
+```
+

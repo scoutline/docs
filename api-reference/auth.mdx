@@ -1,0 +1,25 @@
+---
+title: "Authentication"
+description: "Governing access with AWS Cognito"
+---
+
+Scoutline utilizes **AWS Cognito** for enterprise-grade identity governance. All API requests must be authenticated via a JSON Web Token (JWT) provided by the Cognito User Pool.
+
+## Implicit Firm Isolation
+
+Every token is cryptographically bound to a specific firm's AWS perimeter. When you authenticate, the resulting token automatically scopes your requests to your firm's private VPC and S3 Vault resources.
+
+## Authentication Flow
+
+1. **Exchange Credentials**: Submit your `client_id` and `client_secret` (or username/password) to the Scoutline Cognito endpoint.
+2. **Receive Token**: Upon successful verification, you will receive an `id_token` and an `access_token`.
+3. **Authorize Requests**: Include the `access_token` in the `Authorization` header of every API call.
+
+```bash
+Authorization: Bearer <access_token>
+```
+
+## Multi-Factor Authentication (MFA)
+
+For high-stakes legal operations (e.g., final court filings or permanent data deletion), the API may require an additional MFA challenge. In such cases, the server will return a `403 Forbidden` with a `Challenge-Required` header.
+

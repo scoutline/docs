@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
+  "name": "Scoutline - The Legal Operating System",
   "theme": "mint",
-  "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FFFFFF",
+    "light": "#D1D5DB",
+    "dark": "#111827"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,55 +14,209 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Introduction",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "platform/vision"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Platform",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "platform/capabilities",
+              "platform/storage",
+              "platform/tech-stack",
+              "platform/business"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Getting Started",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "getting-started/setup"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Self-Hosted",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Deployment",
             "pages": [
-              "api-reference/introduction"
+              "self-hosted/installation",
+              "self-hosted/setup",
+              "self-hosted/api-keys",
+              "self-hosted/docker",
+              "self-hosted/server-config"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Infrastructure",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "self-hosted/api-connection",
+              "self-hosted/database",
+              "self-hosted/vector-db",
+              "self-hosted/document-parsing",
+              "self-hosted/testing"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "self-hosted/licensing",
+              "self-hosted/security",
+              "self-hosted/backup-restore",
+              "self-hosted/scaling",
+              "self-hosted/monitoring"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Canvas",
+        "groups": [
+          {
+            "group": "Interface",
+            "pages": [
+              "canvas/overview",
+              "canvas/workspace-layouts",
+              "canvas/layer-management",
+              "canvas/entity-nodes",
+              "canvas/dynamic-timelines"
+            ]
+          },
+          {
+            "group": "Collaboration",
+            "pages": [
+              "canvas/real-time-collaboration",
+              "canvas/command-center",
+              "canvas/canvas-automation",
+              "canvas/version-history",
+              "canvas/canvas-settings"
+            ]
+          },
+          {
+            "group": "Workflows",
+            "pages": [
+              "canvas/exporting",
+              "canvas/matter-linking",
+              "canvas/annotation-workflows",
+              "canvas/visual-queries",
+              "canvas/canvas-security"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Citations",
+        "groups": [
+          {
+            "group": "Engine",
+            "pages": [
+              "citation-engine/overview",
+              "citation-engine/source-mapping",
+              "citation-engine/verifiability-checks",
+              "citation-engine/cross-jurisdiction-logic",
+              "citation-engine/auto-citation"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "citation-engine/audit-trail-sync",
+              "citation-engine/conflict-resolution",
+              "citation-engine/traceable-filings",
+              "citation-engine/integrity-reports",
+              "citation-engine/bluebook-compliance"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "citation-engine/source-verification-api",
+              "citation-engine/batch-validation",
+              "citation-engine/historical-precedent",
+              "citation-engine/citation-graph-exports",
+              "citation-engine/engine-security"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Scout SDK",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "scout-chat-sdk/getting-started",
+              "scout-chat-sdk/configuration-api",
+              "scout-chat-sdk/secure-authentication",
+              "scout-chat-sdk/legal-context-injection",
+              "scout-chat-sdk/streaming-responses"
+            ]
+          },
+          {
+            "group": "Events & UI",
+            "pages": [
+              "scout-chat-sdk/event-listeners",
+              "scout-chat-sdk/ui-library",
+              "scout-chat-sdk/chat-persistence",
+              "scout-chat-sdk/custom-agents",
+              "scout-chat-sdk/rate-limiting"
+            ]
+          },
+          {
+            "group": "Deployment",
+            "pages": [
+              "scout-chat-sdk/error-handling",
+              "scout-chat-sdk/markdown-rendering",
+              "scout-chat-sdk/multimodal-input",
+              "scout-chat-sdk/versioning-stability",
+              "scout-chat-sdk/deployment-patterns"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Security & API",
+        "groups": [
+          {
+            "group": "Security",
+            "pages": [
+              "security/overview"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/auth",
+              "api-reference/rate-limits",
+              "api-reference/errors",
+              "api-reference/versioning",
+              "api-reference/headers",
+              "api-reference/webhooks",
+              "api-reference/sovereignty",
+              "api-reference/sdks",
+              "api-reference/sandbox",
+              "api-reference/tenancy"
+            ]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api-reference/endpoint/vault-list",
+              "api-reference/endpoint/drafting-generate",
+              "api-reference/endpoint/vault-delete",
+              "api-reference/endpoint/audit-logs",
+              "api-reference/endpoint/chat-query",
+              "api-reference/endpoint/webhook-filing"
+            ]
+          },
+          {
+            "group": "Development",
+            "pages": [
+              "development/guide"
             ]
           }
         ]
@@ -72,51 +226,46 @@
       "anchors": [
         {
           "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
+          "href": "https://docs.scoutline.com",
           "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/logo_light_mode.svg",
+    "dark": "/images/logo_dark_mode.svg"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@scoutline.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "To Console",
+      "href": "https://app.usescoutline.com"
     }
   },
   "contextual": {
     "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/scoutline",
+      "github": "https://github.com/scoutline",
+      "linkedin": "https://linkedin.com/company/scoutline"
     }
   }
 }

@@ -1,33 +1,44 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "Introduction"
+description: "Build custom integrations for the Scoutline Legal OS"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
-## Welcome
-
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+The Scoutline API is designed to be extensible, allowing law firms to build custom integrations with existing billing, CRM, or legacy database systems.
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Scoutline uses **AWS Cognito** for secure identity management. All API requests must include a valid Cogito-managed bearer token in the `Authorization` header.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+```bash
+'Authorization': 'Bearer <YOUR_COGNITO_TOKEN>'
 ```
+
+To retrieve a token, authenticate your service account via the Cognito identity endpoint using your client credentials.
+
+## API Principles
+
+- **RESTful Architecture**: Follows standard HTTP methods and status codes.
+- **Strictly Typed Requests**: All inputs are validated against our internal schema to prevent errors in legal workflows.
+- **Granular Permissions**: API tokens are scoped to specific firm subdomains and resources.
+
+## Key Integration Areas
+
+<CardGroup cols={2}>
+  <Card title="Document Drafting" icon="pen-nib">
+    Programmatically trigger document drafting based on external data inputs.
+  </Card>
+  <Card title="Vault Management" icon="vault">
+    Automate the movement of discovery files into the hardened S3 Vault.
+  </Card>
+  <Card title="Audit Retrieval" icon="list-check">
+    Retrieve granular audit logs for internal compliance or billing reports.
+  </Card>
+  <Card title="Canvas Intelligence" icon="brain">
+    Query the Intelligence Canvas for case structures and evidence mapping.
+  </Card>
+</CardGroup>
+
+## Rate Limits
+
+To ensure high-performance for all firms, the API implements strict rate limits. Please use our SDKs for automatic retry logic and backoff handling.
+

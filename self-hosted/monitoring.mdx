@@ -1,0 +1,26 @@
+---
+title: "Monitoring & Health"
+description: "Observability for the self-hosted Legal OS"
+---
+
+Maintaining the health of your self-hosted perimeter is critical for ensuring consistent legal outcome delivery.
+
+## Health Check Endpoint
+
+Monitor the `sc-core` health check endpoint for real-time status:
+
+```bash
+curl http://localhost:8080/health
+```
+
+## Prometheus Integration
+
+Scoutline exports performance metrics in a Prometheus-compatible format. You can visualize:
+- **Drafting Latency**: Time taken per agentic job.
+- **Memory Pressure**: Utilization of the Vector DB and core containers.
+- **Error Rates**: Tracking "Audit-Ready" workflow success.
+
+## Error-Proof Tracing
+
+Integrated tracing allows your infrastructure team to identify bottlenecking services before they affect the lawyers' "Interface Craft" experience.
+

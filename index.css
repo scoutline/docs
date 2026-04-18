@@ -1,0 +1,25 @@
+/* Final Branding & Attribution Overhaul */
+
+/* Replace "Powered by Mintlify" with Scoutline Attribution */
+/* Targets any footer link containing 'mintlify' in the URL (robust across all versions) */
+.footer a[href*="mintlify"] {
+  display: none !important;
+}
+
+.footer::after {
+  content: "Designed by Engineering Team at Scoutline";
+  display: block;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: #6B7280; /* Gray-400 */
+}
+
+/* Footer Copyright & Links Injection */
+.footer::before {
+  content: "© 2026 Scoutline Inc. All Right Reserved | Privacy | Terms | Status";
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #9CA3AF;
+  letter-spacing: 0.025em;
+}

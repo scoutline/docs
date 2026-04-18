@@ -1,0 +1,23 @@
+---
+title: "Source Verification API"
+description: "Interfacing with the engine programmatically"
+---
+
+Integrate the Scoutline Citation Engine directly into your firm's existing toolset via our specialized Verification API.
+
+## Core Endpoints
+
+- `POST /v1/citation/verify`: Submit a text assertion and a source ID for real-time semantic verification.
+- `GET /v1/citation/formats`: Retrieve the compliant citation string for a specific source in multiple styles (Bluebook, ALWD).
+
+## Developer Use Cases
+
+- **Custom CMS Integration**: Add "Verify with Scoutline" buttons to your internal document management systems.
+- **Filing Automation**: Programmatically generate TOAs for externally drafted motions.
+
+```bash
+curl -X POST https://api.scoutline.com/v1/citation/verify \
+  -H "Authorization: Bearer $JWT" \
+  -d '{"claim": "assertion text", "source_id": "vault_id_123"}'
+```
+

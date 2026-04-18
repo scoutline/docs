@@ -1,0 +1,21 @@
+---
+title: "The Vault"
+description: "Hardened Storage for Sensitive discovery"
+---
+
+Security is the foundation of Scoutline, not an afterthought. The **Vault** is a dedicated, high-security storage environment for sensitive discovery documents and client communications.
+
+## Hardened S3 Architecture
+
+Our storage layer is engineered exclusively on **AWS S3**, utilizing multiple layers of protection:
+- **KMS Encryption**: All data is encrypted at rest using AWS Key Management Service with customer-managed keys.
+- **Strict IAM Policies**: Granular Identity and Access Management (IAM) roles ensure that only authorized services and users can access specific objects.
+- **Data Sovereignty**: Choose the AWS region that meets your firm's specific geographical and regulatory requirements.
+
+## Document Indexing
+
+Once documents are moved into the Vault, the Agentic Lawyer begins indexing and mapping the content. This process provides:
+- **Instant Search**: Find any keyword or concept across millions of pages in seconds.
+- **Semantic Mapping**: Understand the relationships between different case files.
+- **Integrity Checks**: Automated verification of document metadata and audit logs.
+

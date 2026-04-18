@@ -1,0 +1,21 @@
+---
+title: "Verifiability Checks"
+description: "Integrity verification for legal and factual sources"
+---
+
+Before the Citation Engine allows a source to be used, it performs a series of high-density verifiability checks.
+
+## Checks Performed
+
+1. **Source Authenticity**: Verifies the document origin and cryptographic signature.
+2. **Contextual Integrity**: Ensures the cited snippet hasn't been taken out of context by analyzing the surrounding 500 words.
+3. **Temporal Validity**: Checks if the cited law was in effect at the time of the event and remains valid today.
+
+## Verification Tiers
+
+| Tier | Status | Requirement |
+| :--- | :--- | :--- |
+| **Gold** | Fully Verified | Direct semantic match with signed source. |
+| **Silver** | Inferred | High-probability match requires partner review. |
+| **Red** | Unverified | Hallucination detected or missing source. |
+

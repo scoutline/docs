@@ -1,0 +1,16 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "description": "Scoutline Documentation",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mintlify dev",
+    "broken-links": "mintlify broken-links"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mintlify": "latest"
+  }
+}

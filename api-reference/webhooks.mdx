@@ -1,0 +1,23 @@
+---
+title: "Webhooks"
+description: "Real-time updates for legal workflows"
+---
+
+Scoutline uses webhooks to notify your systems about events that happen in your firm's perimeter, such as the completion of an Agentic Drafting job or a storage update.
+
+## Event Types
+
+| Event | Description |
+| :--- | :--- |
+| `drafting.completed` | Triggered when a generated legal document is ready for review. |
+| `vault.index_success` | Triggered when a new document is successfully indexed and searchable. |
+| `filing.status_change` | Triggered when a court filing status is updated. |
+
+## Verification
+
+Webhooks are sent as POST requests with a JSON body. You must verify the signature included in the `X-Scoutline-Signature` header to ensure the request originated from our AWS environment.
+
+## Retries
+
+If your server returns a non-200 status code, Scoutline will retry the webhook notification up to **10 times** over 24 hours with exponential backoff.
+

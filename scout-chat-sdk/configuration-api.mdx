@@ -1,0 +1,49 @@
+---
+title: "Configuration API"
+description: "Branding and behavior settings for the Scout Chat interface"
+---
+
+The Scout Chat SDK provides granular control over the look and feel of the guest interface, ensuring it aligns with your firm's "Interface Craft" branding.
+
+## Styling Your Chat
+
+Configure the primary colors and typography via the `configure` method.
+
+<CodeGroup>
+```typescript TypeScript
+chat.configure({
+  theme: 'pure-black',
+  primaryColor: '#FFFFFF',
+  accentColor: '#1A1A1A',
+  fontFamily: 'Inter, sans-serif'
+});
+```
+
+```python Python
+chat.configure(
+    theme='pure-black',
+    primary_color='#FFFFFF',
+    accent_color='#1A1A1A'
+)
+```
+
+```bash cURL
+curl -X PATCH https://api.scoutline.com/v1/chat/config \
+  -H "Authorization: Bearer $JWT" \
+  -d '{"theme": "pure-black", "primary_color": "#FFFFFF"}'
+```
+
+```go Go
+chat.Configure(scoutline.Config{
+    Theme: "pure-black",
+    PrimaryColor: "#FFFFFF",
+})
+```
+</CodeGroup>
+
+## Behavioral Settings
+
+You can also control the starting behavior of the agentic interface:
+- `welcomeMessage`: The initial greeting shown to the user.
+- `suggestions`: Array of prompt suggestions (e.g., ["Summarize the latest motion"]).
+

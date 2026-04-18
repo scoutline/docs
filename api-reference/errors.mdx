@@ -1,0 +1,32 @@
+---
+title: "Errors"
+description: "Predictable handling for high-stakes workflows"
+---
+
+The Scoutline API uses standard HTTP response codes to indicate the success or failure of an API request. Errors are accompanied by an **Error-Proof Guarantee**—we provide detailed context to ensure you can resolve issues instantly.
+
+## Error Schema
+
+All error responses return a standardized JSON object:
+
+```json
+{
+  "error": {
+    "code": "insufficient_permissions",
+    "message": "The user does not have permission to delete this document from the Vault.",
+    "trace_id": "sc_tr_9901x"
+  }
+}
+```
+
+## Common Status Codes
+
+| Code | Description |
+| :--- | :--- |
+| `400` | **Bad Request**: The request was unacceptable, often due to a missing parameter. |
+| `401` | **Unauthorized**: No valid Cognito token provided. |
+| `403` | **Forbidden**: The token is valid but doesn't have permissions for the resource. |
+| `404` | **Not Found**: The requested resource doesn't exist. |
+| `429` | **Too Many Requests**: You hit the rate limit. |
+| `500` | **Scoutline Error**: Something went wrong on our end. This triggers our Error-Proof Guarantee compensation workflow. |
+

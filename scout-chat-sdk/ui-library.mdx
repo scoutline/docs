@@ -1,0 +1,43 @@
+---
+title: "UI Library"
+description: "Using embeddable high-density legal chat widgets"
+---
+
+The Scoutline SDK includes a pre-built UI library for React, Vue, and Vanilla JS, designed with "Interface Craft" precision.
+
+## Pre-built Components
+
+- **`<ScoutChatBox />`**: A full-sized chat interface with built-in citation rendering.
+- **`<CitationPreview />`**: A high-density popup for displaying Source Map snippets.
+- **`<VaultUploader />`**: A secure drag-and-drop area for case evidence.
+
+## Implementation
+
+<CodeGroup>
+```typescript TypeScript
+// React Example
+import { ScoutChatBox } from '@scoutline/chat-sdk/react';
+
+function App() {
+  return <ScoutChatBox envId="env_xxx" />;
+}
+```
+
+```python Python
+# Python SDK is primarily for backend logic.
+# Use the Web SDK for UI components.
+```
+
+```bash cURL
+# UI components are not available via cURL.
+```
+
+```go Go
+// Go SDK is primarily for backend logic.
+```
+</CodeGroup>
+
+## Custom Styling
+
+Every component can be styled using **Tailwind CSS** or standard **Vanilla CSS** tokens defined in your `configuration-api`.
+

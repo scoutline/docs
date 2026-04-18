@@ -1,0 +1,13 @@
+---
+title: "Engine Security"
+description: "Protecting the intellectual integrity graph"
+---
+
+The Citation Engine and its underlying data graph are protected by the same "Zero-Trust" architecture as the rest of the Scoutline Legal OS.
+
+## Integrity Hardening
+
+- **Source Integrity**: Every document in the Vault is SHA-256 hashed to prevent source-tampering before verification.
+- **Isolation**: The citation logic runs within a strictly-managed containerized environment, ensuring that firm strategy never leaks between matters.
+- **Encrypted Trails**: Audit logs are KMS-encrypted at rest and only accessible via authenticated Cognito JWT holders.
+

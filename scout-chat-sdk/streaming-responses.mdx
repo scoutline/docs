@@ -1,0 +1,47 @@
+---
+title: "Streaming Responses"
+description: "Real-time agentic feedback loops via the SDK"
+---
+
+The Scoutline Agentic Models provide real-time streaming feedback, reducing perceived latency for complex legal reasoning.
+
+## Listening to Streams
+
+Use the `onMessage` listener to capture incoming token chunks and citation signals.
+
+<CodeGroup>
+```typescript TypeScript
+chat.onMessage((chunk) => {
+  console.log('Received token:', chunk.text);
+  if (chunk.citations) {
+    updateCitationUI(chunk.citations);
+  }
+});
+```
+
+```python Python
+def on_message(chunk):
+    print(f"Token: {chunk.text}")
+    if chunk.citations:
+        reveal_citations(chunk.citations)
+
+chat.on_message(on_message)
+```
+
+```bash cURL
+# cURL streaming via Server-Sent Events (SSE)
+curl -N https://api.scoutline.com/v1/chat/stream \
+  -H "Authorization: Bearer $JWT"
+```
+
+```go Go
+chat.OnMessage(func(chunk scoutline.Chunk) {
+    fmt.Println(chunk.Text)
+})
+```
+</CodeGroup>
+
+## Handling Finish
+
+The `onFinish` event provides the complete assistant message and the final citation map for persistence in your local logs.
+

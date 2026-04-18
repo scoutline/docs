@@ -1,0 +1,28 @@
+---
+title: "Rate Limits"
+description: "Preserving performance and availability"
+---
+
+To ensure a seamless, high-performance experience for all law firms, the Scoutline API implements strict rate limiting across different tiers.
+
+## Standard Limits
+
+Most endpoints follow these default throttles:
+- **Read Requests**: 5,000 requests per minute.
+- **Write Requests**: 1,000 requests per minute.
+- **Agentic Drafting**: 50 concurrent jobs per firm.
+
+## Rate Limit Headers
+
+Every API response includes headers to help you track your current consumption:
+
+| Header | Description |
+| :--- | :--- |
+| `X-RateLimit-Limit` | The maximum number of requests allowed in the current window. |
+| `X-RateLimit-Remaining`| The number of requests remaining in the current window. |
+| `X-RateLimit-Reset` | The time (in UTC) when the current window resets. |
+
+## Handling Throttling
+
+When a limit is reached, the API returns a `429 Too Many Requests`. Our official SDKs include automatic exponential backoff to handle these cases gracefully.
+

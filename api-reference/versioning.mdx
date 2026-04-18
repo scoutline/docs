@@ -1,0 +1,22 @@
+---
+title: "Versioning"
+description: "Stable and predictable legal infrastructure"
+---
+
+Scoutline treats API stability as a core requirement for the legal industry. We follow strict Semantic Versioning (SemVer) principles to ensure your integrations never break unexpectedly.
+
+## API Paths
+
+We include the major version in the URL path:
+- `https://api.scoutline.com/v1/...`
+
+## Deprecation Policy
+
+When we introduce a new version (e.g., `v2`), we commit to supporting the previous version (`v1`) for a minimum of **24 months**. 
+- **Notices**: Firms will receive advance notice via the Scoutline Dashboard and email.
+- **Headers**: Deprecated endpoints will return an `X-API-Deprecation-Date` header.
+
+## Backward-Compatible Changes
+
+We may add new fields to existing endpoints without incrementing the version number. Your integrations should be designed to ignore unexpected fields in JSON responses.
+

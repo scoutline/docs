@@ -1,0 +1,44 @@
+---
+title: "Secure Authentication"
+description: "Governing session access with Scoutline Cognito JWTs"
+---
+
+Security is the baseline for the Scoutline Legal OS. The Scout Chat SDK requires a valid JWT for every session.
+
+## Generating a Session Token
+
+Before initializing the SDK on the client side, your backend must request a session token from the Scoutline Global API using your firm's secret keys.
+
+<CodeGroup>
+```typescript TypeScript
+// Backend (Node.js)
+const token = await scoutline.auth.generateSessionToken({
+  matterId: 'matt_123',
+  userId: 'user_abc'
+});
+```
+
+```python Python
+# Backend (Python)
+token = scoutline.auth.generate_session_token(
+    matter_id='matt_123',
+    user_id='user_abc'
+)
+```
+
+```bash cURL
+curl -X POST https://api.scoutline.com/v1/auth/session \
+  -H "X-API-Key: $FIRM_SECRET" \
+  -d '{"matter_id": "matt_123", "user_id": "user_abc"}'
+```
+
+```go Go
+// Backend (Go)
+token, _ := scoutline.Auth.GenerateSessionToken("matt_123", "user_abc")
+```
+</CodeGroup>
+
+## Token Expiry
+
+Tokens are short-lived (default 1 hour). The SDK will emit a `tokenExpired` event when a refresh is required.
+

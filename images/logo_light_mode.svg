@@ -1,0 +1,10 @@
+<svg width="160" height="28" viewBox="0 0 160 28" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scoutline Text (Black for Light Mode) -->
+  <text x="0" y="21" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="20" fill="black">Scoutline</text>
+  
+  <!-- DOCS Tag Box -->
+  <rect x="105" y="5" width="48" height="18" rx="4" fill="#1A1A1A" stroke="#333333" stroke-width="1"/>
+  
+  <!-- DOCS Tag Text -->
+  <text x="111" y="18" font-family="JetBrains Mono, monospace" font-size="11" font-weight="500" fill="white">DOCS</text>
+</svg>

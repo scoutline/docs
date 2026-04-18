@@ -1,0 +1,27 @@
+---
+title: "Installation"
+description: "Prerequisites and hardware requirements for on-premise Legal OS"
+---
+
+Deploying Scoutline in a self-hosted environment requires a dedicated infrastructure that meets our "Interface Craft" performance standards.
+
+## Hardware Requirements
+
+| Component | Minimum | Recommended |
+| :--- | :--- | :--- |
+| **CPU** | 8 Cores (AVX2 supported) | 16+ Cores |
+| **Memory** | 32GB RAM | 64GB+ RAM |
+| **Storage** | 500GB NVMe SSD | 2TB+ NVMe SSD |
+| **Network** | 1 Gbps | 10 Gbps |
+
+## Software Prerequisites
+
+- **OS**: Ubuntu 22.04 LTS or Amazon Linux 2023.
+- **Docker**: Engine version 24.x or higher.
+- **Compose**: Plugin version 2.x or higher.
+- **Kernel**: 5.15+ with advanced memory management.
+
+## Connectivity
+
+While the core application logic runs locally, your instance requires periodic access to the **Scoutline Global API** for license validation and agentic model updates unless deployed in an air-gapped configuration (Enterprise only).
+

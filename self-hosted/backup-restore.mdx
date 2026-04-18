@@ -1,0 +1,28 @@
+---
+title: "Backup & Restore"
+description: "Data persistence and disaster recovery for self-hosted firms"
+---
+
+Protecting your firm's intelligence requires a robust backup strategy for both the relational database and the S3-compatible document store.
+
+## Relational Data (RDS Equivalent)
+
+Perform daily snapshots of your local PostgreSQL database:
+
+```bash
+docker exec sc-db pg_dump -U scoutline > backup_$(date +%F).sql
+```
+
+## Document Store (Vault)
+
+Backup your local Vault volumes to an off-site, air-gapped storage location. Since Scoutline uses a standardized file structure, traditional rsync or dedicated volume backup tools are fully compatible.
+
+## Restoration Workflow
+
+To restore your instance:
+1. Re-initialize the Docker stack on a fresh host.
+2. Inject the `.env` and `keys.json` files.
+3. Import the database SQL dump.
+4. Mount the backed-up Vault volumes.
+5. Run `scoutline-cli validate` to ensure integrity.
+
