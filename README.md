@@ -1,55 +1,23 @@
-# Mintlify Starter Kit
+# Scoutline Documentation
 
-Use the starter kit to get your docs deployed and ready to customize.
+The Legal Operating System Engineered on AWS.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+Scoutline is a comprehensive workspace that unifies case management, intelligence, and filing into a single, high-performance environment. As a remote-first platform, we prioritize agility and global accessibility without compromising the rigid security standards of the legal profession.
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+## Site Links
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+- **Documentation**: [docs.scoutline.com](https://docs.scoutline.com)
+- **Console**: [app.usescoutline.com](https://app.usescoutline.com)
+- **Support**: [support@scoutline.com](mailto:support@scoutline.com)
 
-## AI-assisted writing
+## Social Media
 
-Set up your AI coding tool to work with Mintlify:
+- **X (Twitter)**: [x.com/scoutline](https://x.com/scoutline)
+- **GitHub**: [github.com/scoutline](https://github.com/scoutline)
+- **LinkedIn**: [linkedin.com/company/scoutline](https://linkedin.com/company/scoutline)
 
-```bash
-npx skills add https://mintlify.com/docs
-```
+## License & Copyright
 
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
+Copyright © 2026 Scoutline. All rights reserved.
 
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
-mint dev
-```
-
-View your local preview at `http://localhost:3000`.
-
-## Publishing changes
-
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
-
-## Need help?
-
-### Troubleshooting
-
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
-
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+This project is licensed under the [MIT License](LICENSE).
